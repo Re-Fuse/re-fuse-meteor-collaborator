@@ -2,7 +2,9 @@
 
 Accounts.ui.config passwordSignupFields: 'USERNAME_ONLY'
 
-angular.module 'simple-todos', [ 'angular-meteor', 'accounts.ui' ]
+angular.module 'simple-todos', ['angular-meteor', 'accounts.ui', 'youtube-embed']
+
+
 angular.module('simple-todos').controller 'TodosListCtrl', [
   '$scope'
   ($scope) ->
@@ -11,6 +13,14 @@ angular.module('simple-todos').controller 'TodosListCtrl', [
       { text: 'This is task 2' }
       { text: 'This is task 3' }
     ]
+
+    # $scope.theBestVideo = '7YurgZC_Mh8'
+    $scope.theBestVideo = 'bYtWzqjtsJU'
+
+    $scope.playerVars = {
+        controls: 0,
+        autoplay: 1
+    }
 
     # $scope.addTask = (newTask) ->
     #   $scope.tasks.push

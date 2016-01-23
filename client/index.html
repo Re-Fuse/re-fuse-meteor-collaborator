@@ -1,5 +1,7 @@
 <head>
   <title>Todo List</title>
+  <script src="https://www.youtube.com/iframe_api"></script>
+
 </head>
 
 <body>
@@ -13,6 +15,7 @@
 
     <div id="user">
       <h1>Hey {{ $root.currentUser.username }}</h1>
+      <youtube-video video-id="theBestVideo" player-width="'100%'" player-vars="playerVars"></youtube-video>
     </div>
 
     <div id="admin" ng-show="$root.currentUser.username == 'kieran'">

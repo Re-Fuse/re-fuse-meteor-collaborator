@@ -1,1 +1,1 @@
-Tasks = new Mongo.Collection('tasks')
+Actions = new Mongo.Collection('actions')
