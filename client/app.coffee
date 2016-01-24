@@ -11,20 +11,34 @@ angular.module('simple-todos').controller 'TodosListCtrl', [
     $scope.actions = $meteor.collection(Actions)
     $scope.$broadcast('timer-clear')
 
+    $scope.currentStep = 0
+
+    $scope.steps = [
+      text: 'Hello everyone! Let’s start the second day of our online roundtable!'
+      action: 'welkom'
+      options: null
+    ]
+
+    # Trigger mechanism
+    $scope.$watch 'currentStep', (val)->
+      step = $scope.steps[val]
+      $scope.say step.text
+      $scope.newAction step.action, step.options if step.action
+
+    # Action watcher for clients
     $scope.$watchCollection 'actions', (val)->
       $scope.currentAction = $scope.actions[$scope.actions.length - 1]
 
-
+      # VIDEO
       if $scope.currentAction.type != 'play_video'
-        $scope.bestPlayer.stopVideo()
+        $scope.bestPlayer.stopVideo() if $scope.bestPlayer
 
+      # QUESTIONS
       if $scope.currentAction.type == 'ask_questions'
         $scope.$broadcast('timer-clear')
         $scope.$broadcast('timer-start')
-        $scope.questionsStarted = true
         $('textarea.answer').show()
       else
-        $scope.questionsStarted = false
         $scope.$broadcast('timer-stop')
 
 
@@ -32,13 +46,6 @@ angular.module('simple-todos').controller 'TodosListCtrl', [
         controls: 1,
         autoplay: 1
     }
-
-    $scope.$on 'timer-stopped', (event, data) ->
-      if $scope.questionsStarted
-        $scope.say "#{$('textarea.answer').val()}\n--\n--\n--"
-        $('textarea.answer').hide()
-
-
 
     # ADMIN
     # types: play_video, set_timer, ask_questions
@@ -60,6 +67,7 @@ angular.module('simple-todos').controller 'TodosListCtrl', [
             username: 'RE-FUSE BOT'
             icon_emoji: ":ghost:"
             text: text
+            channel: '#test'
           )
         dataType: 'json'
         success: (msg)->

@@ -1,5 +1,5 @@
 <head>
-  <title>Todo List</title>
+  <title>RE-FUSE</title>
   <script src="https://www.youtube.com/iframe_api"></script>
 
 </head>
@@ -10,12 +10,12 @@
     <login-buttons ng-hide="$root.currentUser"></login-buttons>
 
     <div id="user">
-      <div id="video" ng-show="currentAction.type == 'welkom'">
-        <!-- <h1>Hey
-          {{ $root.currentUser.username }}</h1> -->
+      <div id="welcome" ng-show="currentAction.type == 'welkom'">
+        <h1>Hey
+          {{ $root.currentUser.username }}</h1>
         <hr>
-        <h1>Welcome to RE-FUSE - DAY ONE</h1>
-        <h2>Keep this screen open next to slack and videos and more will play from here.</h2>
+        <h1>Welcome to RE-FUSE - DAY TWO</h1>
+        <h2 ng-hide="$root.currentUser.username">Please create an account in the top left corner. Click Sign In > Create Account. You will se your name and the Sign in window will disappear.</h2>
       </div>
 
       <div id="video" ng-show="currentAction.type == 'play_video'">
@@ -25,7 +25,7 @@
       <div id="questions" ng-show="currentAction.type == 'ask_questions'">
         <h1>Answer these questions</h1>
         <h3>You have 8 minutes</h3>
-        <timer countdown="480" interval="1000">
+        <timer countdown="480" interval="1000" autostart="false">
           <div class="progress active {{displayProgressActive}}" style="height: 30px;">
             Remaining time :
             {{countdown}}
@@ -38,32 +38,26 @@
 
         <form>
           <div class="form-group">
-            <label>{{ question.question }}</label>
+            <label>Vraag 1</label>
             <textarea class='answer' rows='20' style='width:100%;' class="form-control">
-what is your full name?
-
-
-where are you right now (city and actual space)?
-
-
-what are you doing in life professionally?
-
-
-what’s the project you’re working on at the moment?
-
-
-do you know any of the other members of the team, and how?
-
-
-anything else you’d like to say to the rest of the team?
             </textarea>
           </div>
         </form>
       </div>
     </div>
 
-      <div id="admin" ng-show="$root.currentUser.username == 'kieran'">
-        <button ng-click="say('Hi')"># Hi</button>
+    <div id="admin" ng-show="$root.currentUser.username == 'kieran'">
+  <input type="input" ng-model="currentStep">
+  <button ng-click="currentStep = currentStep + 1">+ NEXT</button><button ng-click="currentStep = currentStep - 1">- prev</button>
+  <hr>
+  <ul>
+    <li ng-repeat="(index, step) in steps">
+      <span ng-show="index == currentStep">###</span>
+      {{index}} -
+      {{ step.text }}
+    </li>
+  </ul>
+  <!-- <button ng-click="say('Hi')"># Hi</button>
         <button ng-click="newAction('welkom',null)">Welkom</button>
         <button ng-click="say('Hi, welcome, Please open this page next to this chat room and follow instructions: <http://re-fuse-day-1.meteor.com>')">#Welcome</button>
 
@@ -84,11 +78,9 @@ anything else you’d like to say to the rest of the team?
         10. <button ng-click="randomGroupChat()"># Random group chat 1'</button>
         11.<button ng-click="newAction('play_video',{video_id: 'Jwe4EbyyYMw?t=17m15s'})">VIDEO George 17m15s</button>
         12. <button ng-click="newAction('play_video',{video_id: '36Dhf7H7ffY'})">VIDEO Kieran</button>
-        13. <button ng-click="randomvideoChat()"># One to one video chat</button>
+        13. <button ng-click="randomvideoChat()"># One to one video chat</button> -->
 
-
-
-      </div>
+</div>
 
     </div>
   </body>
