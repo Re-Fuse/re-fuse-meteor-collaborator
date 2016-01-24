@@ -15,7 +15,7 @@
           {{ $root.currentUser.username }}</h1>
         <hr>
         <h1>Welcome to RE-FUSE - DAY TWO</h1>
-        <h2 ng-hide="$root.currentUser.username">Please create an account in the top left corner. Click Sign In > Create Account. You will se your name and the Sign in window will disappear.</h2>
+        <h2 ng-hide="$root.currentUser.username">Please create an account in the top left corner. Click Sign In > Create Account. Fill in your first name and type your password twice. Once you create your account the Sign in icon will disappear.</h2>
       </div>
 
       <div id="video" ng-show="currentAction.type == 'play_video'">
@@ -24,8 +24,8 @@
 
       <div id="questions" ng-show="currentAction.type == 'ask_questions'">
         <h1>Answer these questions</h1>
-        <h3>You have 8 minutes</h3>
-        <timer countdown="480" interval="1000" autostart="false">
+        <h3>You have 15 minutes</h3>
+        <timer countdown="900" interval="1000" autostart="false">
           <div class="progress active {{displayProgressActive}}" style="height: 30px;">
             Remaining time :
             {{countdown}}
@@ -37,48 +37,47 @@
         </timer>
 
         <form>
-          <div class="form-group">
-            <label>Vraag 1</label>
-            <textarea class='answer' rows='20' style='width:100%;' class="form-control">
+          <div class="form-group" ng-show="answering">
+            <label>What is music-theater for you? (ca. 5 lines)</label>
+            <textarea class='answer' rows='4' style='width:100%;' class="form-control" ng-model='answer.a'>
             </textarea>
+            <label>Have you worked in this field before? If yes, what kind of skills of yours have you applied until now in music-theater? (e.g. moving on stage/dancing, singing, acting, stage directing etc.) </label>
+            <textarea class='answer' rows='6' style='width:100%;' class="form-control" ng-model='answer.b'>
+            </textarea>
+            <label>Is there something in particular you find attractive/challenging in music-theater? (ca. 5 lines)</label>
+            <textarea class='answer' rows='4' style='width:100%;' class="form-control" ng-model='answer.c'>
+            </textarea>
+            <label>What professional/personal skills of yours would you love to be taken advantage of in a music-theater piece? (e.g. sense of space, perfect pitch, playing the Eb clarinet, crisp articulation etc.)</label>
+            <textarea class='answer' rows='6' style='width:100%;' class="form-control" ng-model='answer.d'>
+            </textarea>
+            <button class='btn btn-primary' ng-click='newAnswer(answer)'>Submit Answers (Do this when the timer is up only!)</button>
           </div>
         </form>
       </div>
     </div>
 
     <div id="admin" ng-show="$root.currentUser.username == 'kieran'">
-  <input type="input" ng-model="currentStep">
-  <button ng-click="currentStep = currentStep + 1">+ NEXT</button><button ng-click="currentStep = currentStep - 1">- prev</button>
+  <!-- <input type="input" ng-model="currentStep"> -->
+  <h1>step {{ currentStep }}</h1>
+  <button ng-click="setStep(currentStep + 1)">+ NEXT</button><button ng-click="setStep(currentStep - 1)">- prev</button>
   <hr>
   <ul>
     <li ng-repeat="(index, step) in steps">
-      <span ng-show="index == currentStep">###</span>
-      {{index}} -
-      {{ step.text }}
+      <span ng-click="setStep(index)">
+        <span ng-show="index == currentStep">🏀🏀🏀</span>
+        {{index}} -
+        {{ step.text }}
+      </span>
     </li>
   </ul>
-  <!-- <button ng-click="say('Hi')"># Hi</button>
-        <button ng-click="newAction('welkom',null)">Welkom</button>
-        <button ng-click="say('Hi, welcome, Please open this page next to this chat room and follow instructions: <http://re-fuse-day-1.meteor.com>')">#Welcome</button>
+  <hr>
+  <h2>Answers</h2>
 
-        1.
-        <button ng-click="newAction('play_video',{video_id: '7YurgZC_Mh8'})">VIDEO: Live Stream</button>
-        2. ........
-        3. ........
-        4. <button ng-click="newAction('ask_questions',1)">Questions: Present ourselves 8'</button>
-        5. <button ng-click="say('Now we will have 10 minutes to read all the introductions')"># READING 10'</button>
-        6. <button ng-click="say('We are going to stalk! \n Find 2 photos + 2 related short texts/quotes in 4 minutes of your target. See the list below: \n \n Thanasis -> Tzeni\nEfthimis -> Pepe\nKieran -> Roelof\nRoelof -> Iro\nGeorge -> Els\nIro -> Bas\nTzeni -> Thanasis\nRichard -> Kieran\nEls -> Efthimis\nPepe -> George\nBas -> Richard')"># STALK 4' (stopwatch)</button>
-        <button ng-click="say('We have 3 more minutes')"># 3 more minutes</button>
-        <button ng-click="say('We have 2 more minutes')"># 2 more minutes</button>
-        <button ng-click="say('We have 1 minute to go!')"># 1 minute to go!</button>
-        <button ng-click="say('Stop looking and post your 2 photos + 2 related short texts/quotes below')"># Stop looking</button>
-        7. <button ng-click="randomGroupChat()"># Random group chat 1'</button>
-        8.<button ng-click="newAction('play_video',{video_id: 'p0qNbwDt_Ds'})">VIDEO Pepe</button>
-        9. <button ng-click="newAction('play_video',{video_id: 'VxAgcoXL95M'})">VIDEO Tzeni</button>
-        10. <button ng-click="randomGroupChat()"># Random group chat 1'</button>
-        11.<button ng-click="newAction('play_video',{video_id: 'Jwe4EbyyYMw?t=17m15s'})">VIDEO George 17m15s</button>
-        12. <button ng-click="newAction('play_video',{video_id: '36Dhf7H7ffY'})">VIDEO Kieran</button>
-        13. <button ng-click="randomvideoChat()"># One to one video chat</button> -->
+  <ul>
+    <li ng-repeat="ans in answers">
+      {{ ans }} <button ng-click="destroyAnswer(ans._id)">x</button>
+    </li>
+  </ul>
 
 </div>
 
