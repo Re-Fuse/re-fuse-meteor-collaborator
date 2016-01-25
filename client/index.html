@@ -14,7 +14,7 @@
         <h1>Hey
           {{ $root.currentUser.username }}</h1>
         <hr>
-        <h1>Welcome to RE-FUSE - DAY TWO</h1>
+        <h1>Welcome to RE-FUSE - DAY THREE</h1>
         <h2 ng-hide="$root.currentUser.username">Please create an account in the top left corner. Click Sign In > Create Account. Fill in your first name and type your password twice. Once you create your account the Sign in icon will disappear.</h2>
       </div>
 
@@ -22,10 +22,17 @@
         <youtube-video video-id="currentAction.options.video_id" player-width="'100%'" player-vars="playerVars" player-height="'600px'" player="bestPlayer"></youtube-video>
       </div>
 
+      <div id="live_stream" ng-show="currentAction.type == 'live_stream'">
+        <h1>Hey
+          {{ $root.currentUser.username }}</h1>
+        <hr>
+        <a href="https://hangouts.google.com/call/fwqa3bdcx3il2qknubkmn2fpaea" target="_BLANK">CLICK HERE TO JOIN THE LIVE STREAM</a>
+      </div>
+
       <div id="questions" ng-show="currentAction.type == 'ask_questions'">
         <h1>Answer these questions</h1>
-        <h3>You have 15 minutes</h3>
-        <timer countdown="900" interval="1000" autostart="false">
+        <h3>You have 10 minutes</h3>
+        <timer countdown="600" interval="1000" autostart="false">
           <div class="progress active {{displayProgressActive}}" style="height: 30px;">
             Remaining time :
             {{countdown}}
@@ -38,19 +45,16 @@
 
         <form>
           <div class="form-group" ng-show="answering">
-            <label>What is music-theater for you? (ca. 5 lines)</label>
+            <label>What do you expect from this platform? (ca. 5 lines)</label>
             <textarea class='answer' rows='4' style='width:100%;' class="form-control" ng-model='answer.a'>
             </textarea>
-            <label>Have you worked in this field before? If yes, what kind of skills of yours have you applied until now in music-theater? (e.g. moving on stage/dancing, singing, acting, stage directing etc.) </label>
+            <label>What do you expect from our first workshop? (ca. 5 lines)</label>
             <textarea class='answer' rows='6' style='width:100%;' class="form-control" ng-model='answer.b'>
             </textarea>
-            <label>Is there something in particular you find attractive/challenging in music-theater? (ca. 5 lines)</label>
+            <label>What are you interested in exploring/researching further in your work this period (regardless the music-theater field)? (ca. 5 lines)</label>
             <textarea class='answer' rows='4' style='width:100%;' class="form-control" ng-model='answer.c'>
             </textarea>
-            <label>What professional/personal skills of yours would you love to be taken advantage of in a music-theater piece? (e.g. sense of space, perfect pitch, playing the Eb clarinet, crisp articulation etc.)</label>
-            <textarea class='answer' rows='6' style='width:100%;' class="form-control" ng-model='answer.d'>
-            </textarea>
-            <button class='btn btn-primary' ng-click='newAnswer(answer)'>Submit Answers (Do this when the timer is up only!)</button>
+            <button class='btn btn-primary' ng-click='newAnswer(answer)'>Submit Answers (Do this when the timer is up only & you are logged in!)</button>
           </div>
         </form>
       </div>
@@ -59,7 +63,8 @@
     <div id="admin" ng-show="$root.currentUser.username == 'kieran'">
   <!-- <input type="input" ng-model="currentStep"> -->
   <h1>step {{ currentStep }}</h1>
-  <button ng-click="setStep(currentStep + 1)">+ NEXT</button><button ng-click="setStep(currentStep - 1)">- prev</button>
+  <button ng-click="setStep(currentStep + 1)">+ NEXT</button>
+  <button ng-click="setStep(currentStep - 1)">- prev</button>
   <hr>
   <ul>
     <li ng-repeat="(index, step) in steps">
@@ -74,6 +79,14 @@
   <h2>Answers</h2>
 
   <ul>
+    <h1>total in: {{ answers.length }}</h1>
+    <h4>'Efthimis', 'Kieran', 'Roelof', 'George', 'Iro', 'Tzeni', 'Richard', 'Els', 'Pepe', 'Bas', 'Thanasis'</h4>
+    <li ng-repeat="ans in answers">
+      {{ ans.username }}
+    </li>
+  </ul>
+  <ul>
+    <h1>total in: {{ answers.length }}</h1>
     <li ng-repeat="ans in answers">
       {{ ans }} <button ng-click="destroyAnswer(ans._id)">x</button>
     </li>

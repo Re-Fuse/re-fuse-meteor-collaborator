@@ -18,11 +18,11 @@ angular.module('simple-todos').controller 'TodosListCtrl', [
       $scope.currentStep = step
 
     $scope.steps = [
-      text: "Hello everyone! Let’s start the second day of our online roundtable!"
+      text: "Hello everyone! Let’s start the third and last day of our online roundtable!"
       action: 'welkom'
       options: null
     ,
-      text: "Hi Kieran, are you here?"
+      text: "Hi Iro, are you here?"
       action: 'welkom'
       options: null
     ,
@@ -30,11 +30,11 @@ angular.module('simple-todos').controller 'TodosListCtrl', [
       action: 'welkom'
       options: null
     ,
-      text: "Hi Els, are you here?"
+      text: "Hi George, are you here?"
       action: 'welkom'
       options: null
     ,
-      text: "Great, Els!"
+      text: "Great, George!"
       action: 'welkom'
       options: null
     ,
@@ -54,19 +54,43 @@ angular.module('simple-todos').controller 'TodosListCtrl', [
       action: 'welkom'
       options: null
     ,
-      text: "Hi Bas, are you here?"
-      action: 'welkom'
-      options: null
-    ,
-      text: "Great, Bas!"
-      action: 'welkom'
-      options: null
-    ,
       text: "Hi Pepe, are you here?"
       action: 'welkom'
       options: null
     ,
-      text: "You nailed it, Pepe!"
+      text: "Great, Pepe!"
+      action: 'welkom'
+      options: null
+    ,
+      text: "Hi Bas, are you here?"
+      action: 'welkom'
+      options: null
+    ,
+      text: "You nailed it, Bas!"
+      action: 'welkom'
+      options: null
+    ,
+      text: "Hi Kieran, are you here?"
+      action: 'welkom'
+      options: null
+    ,
+      text: "Welcome, Kieran!"
+      action: 'welkom'
+      options: null
+    ,
+      text: "Hi Efthimis, are you here?"
+      action: 'welkom'
+      options: null
+    ,
+      text: "Great!"
+      action: 'welkom'
+      options: null
+    ,
+      text: "Hi Els, are you here?"
+      action: 'welkom'
+      options: null
+    ,
+      text: "Welcome, Els!"
       action: 'welkom'
       options: null
     ,
@@ -82,181 +106,125 @@ angular.module('simple-todos').controller 'TodosListCtrl', [
       action: 'welkom'
       options: null
     ,
-      text: "Great!"
+      text: "Nice, Thanasis!"
       action: 'welkom'
       options: null
     ,
-      text: "Hi Iro, are you here?"
+      text: "Great, no one is missing."
       action: 'welkom'
       options: null
     ,
-      text: "Welcome, Iro!"
+      text: "Please click on this link and sign in. In case your account is not working anymore you can easily create again a new one, like yesterday."
       action: 'welkom'
       options: null
     ,
-      text: "Hi George, are you here?"
+      text: "http://re-fuse-day-3.meteor.com"
       action: 'welkom'
       options: null
     ,
-      text: "Welcome, George!"
+      text: "If you managed to log in successfully, the Sign in (top left corner) will disappear."
       action: 'welkom'
       options: null
     ,
-      text: "Hi Efthimis, are you here?"
-      action: 'welkom'
-      options: null
-    ,
-      text: "Nice, Efthimis!"
-      action: 'welkom'
-      options: null
-    ,
-      text: "Great, no one is missing. What an inspiring team!"
-      action: 'welkom'
-      options: null
-    ,
-      text: "Please click on this link and follow the instructions."
-      action: 'welkom'
-      options: null
-    ,
-      text: "http://re-fuse-day-2.meteor.com"
-      action: 'welkom'
-      options: null
-    ,
-      text: "Everybody created an account? Thanasis will give now a short introduction about today's roundtable."
+      text: "Now Thanasis is going to make a short introduction about today’s roundtable."
       action: 'play_video'
-      options: {video_id: '3NxMHP4rCko'}
+      options: {video_id: 'r5LXDD2rfFQ'}
     ,
-      text: "Thank you for keeping it short, Thanasis. Moving on, you are all going to answer a questionnaire. You have 15’."
+      text: "Great! Now you all know what to expect, don’t you! \n Next: Please click on your name. It will bring you to a hangout conversation. Click on JOIN HANGOUT and enjoy a few minutes of social interaction."
+      action: 'play_video'
+      options: {video_id: 'r5LXDD2rfFQ'}
+    ,
+      function: -> randomvideoChat()
+      action: 'play_video'
+      options: {video_id: 'r5LXDD2rfFQ'}
+    ,
+      text: "Now close your hangout and click once again on your name."
+      action: 'play_video'
+      options: null
+    ,
+      function: -> randomvideoChat()
+      action: 'play_video'
+      options: {video_id: 'r5LXDD2rfFQ'}
+    ,
+      text: "Moving on, you are all going to answer a questionnaire in the meteor/todo window. You have 10’."
       action: 'ask_questions'
       options: null
     ,
-      text: "Are you all finished with the questionnaire?"
-      action: 'play_video'
-      options: {video_id: '3NxMHP4rCko'}
-    ,
-      text: "Good! Let’s watch now a video of Bas doing his job / existing on stage."
-      action: 'play_video'
-      options: {video_id: 'h0oW5sEMY2g'}
-    ,
-      text: "Great, Bas! What a profession…! Now let’s read the answers that you all wrote in the questionnaire. Let’s start with the first question:"
-      action: 'play_video'
-      options: {video_id: '3NxMHP4rCko'}
-    ,
-      text: 'What is music-theater for you?'
-      action: 'play_video'
-      options: {video_id: '3NxMHP4rCko'}
-    ,
-      function: -> postAnswers('a')
-      action: 'play_video'
-      options: {video_id: '3NxMHP4rCko'}
-    ,
-      text: "How did you come up with all these stories, guys?! \n Let’s now watch an excerpt of a music-theater piece that Iro would like to share with the rest of the team. "
-      action: 'play_video'
-      options: {video_id: 'y87y9TTjgcc'}
-    ,
-      text: "Moving on, let’s watch an excerpt of a music-theater piece that Richard would like to share with the rest of the team. You should skip to 28:00."
-      action: 'play_video'
-      options: {video_id: 'MXvr8jmOle0?t=28m'}
-    ,
-      text: "Let’s watch now a video of Efthimis doing his job / existing on stage."
-      action: 'play_video'
-      options: {video_id: 'ibO01uJI07M'}
-    ,
-      text: "Great, Efthimis! What a profession…! Now let’s read the answers that you all wrote on the second question."
-      action: 'play_video'
-      options: {video_id: '3NxMHP4rCko'}
-    ,
-      text: 'Have you worked in this field before? If yes, what kind of skills of yours have you applied until now in music-theater? (e.g. moving on stage/dancing, singing, acting, stage directing etc.)'
-      action: 'play_video'
-      options: {video_id: '3NxMHP4rCko'}
-    ,
-      function: -> postAnswers('b')
-      action: 'play_video'
-      options: {video_id: '3NxMHP4rCko'}
-    ,
-      text: "Moving on, let’s watch an excerpt of a music-theater piece that George would like to share with the rest of the team."
-      action: 'play_video'
-      options: {video_id: 'b1SIUcfS1Zw'}
-    ,
-      text: "Let’s continue like this, I like it! Let’s watch an excerpt of a music-theater piece that Thanasis would like to share with the rest of the team. You should skip to 01:00."
-      action: 'play_video'
-      options: {video_id: 'XaON3v3IpNU?t=1m'}
-    ,
-      text: "But there is more! I like it! Let’s watch an excerpt of a music-theater piece that Pepe would like to share with the rest of the team. You should skip to 07:25."
-      action: 'play_video'
-      options: {video_id: 'IPWB4p-GT38?t=7m25s'}
-    ,
-      text: "You guys impress me. Let’s now watch a video of Els doing her job / existing on stage."
-      action: 'play_video'
-      options: {video_id: 'r1nRI5x25pc'}
-    ,
-      text: "Great, Els! What a profession…! Now see what you answered on the third question of the questionnaire."
-      action: 'play_video'
-      options: {video_id: '3NxMHP4rCko'}
-    ,
-      text: 'Is there something in particular you find attractive/challenging in music-theater?'
-      action: 'play_video'
-      options: {video_id: '3NxMHP4rCko'}
-    ,
-      function: -> postAnswers('c')
-      action: 'play_video'
-      options: {video_id: '3NxMHP4rCko'}
-    ,
-      text: "More video! Let’s watch an excerpt of a music-theater piece that Bas would like to share with the rest of the team."
-      action: 'play_video'
-      options: {video_id: 'e0d7BVYZ4MM'}
-    ,
-      text: "Wow! I can now only think of moving to the answers you all wrote on the fourth question of the questionnaire. Let’s have a look!"
-      action: 'play_video'
-      options: {video_id: '3NxMHP4rCko'}
-    ,
-      text: 'What professional/personal skills of yours would you love to be taken advantage of in a music-theater piece? (e.g. sense of space, perfect pitch, playing the Eb clarinet, crisp articulation etc.)'
-      action: 'play_video'
-      options: {video_id: '3NxMHP4rCko'}
-    ,
-      function: -> postAnswers('d')
-      action: 'play_video'
-      options: {video_id: '3NxMHP4rCko'}
-    ,
-      text: "So many skills! Did I tell you I can type short directions? \n Let’s watch one more video. This is Roelof doing his job / existing on stage."
+      text: "Good! Let’s watch a video. This is Roelof doing his job / existing on stage."
       action: 'play_video'
       options: {video_id: 'dICHosfr5is'}
     ,
-      text: "Moving on, in the next 15’ you will have the chance to discuss on a few ideas. You are going to chat in four different rooms (channels) under different thematics. Please check the short description when you enter each room. I will let you know when to move to a different one. Here are the first groups:"
+      text: "Great, Roelof! What a profession…!"
       action: 'play_video'
-      options: {video_id: '3NxMHP4rCko'}
+      options: {video_id: 'r5LXDD2rfFQ'}
+    ,
+      text: "Let’s now watch an excerpt of a music-theater piece that Efthimis would like to share with the rest of the team."
+      action: 'play_video'
+      options: {video_id: '4p4QGXdaFVM'}
+    ,
+      text: 'Moving on, let’s now watch a video of Thanasis doing his job / existing on stage. Please skip the video at 15:35.'
+      action: 'play_video'
+      options: {video_id: 'U5kDuehK8Is?t=15m35s'}
+    ,
+      text: "Great, Thanasis! What a profession…! \n Let’s now watch an excerpt of a music-theater piece that Kieran would like to share with the rest of the team."
+      action: 'play_video'
+      options: {video_id: 'OcTT0KCY2BY'}
+    ,
+      text: "So many things in the world I didn’t know exist… \n Let’s watch one more! This is an excerpt of a music-theater piece that Tzeni would like to share with the rest of the team."
+      action: 'play_video'
+      options: {video_id: 'u0q7Hq4V_QY'}
+    ,
+      text: "Great! Now let’s read your answers in one of the questionnaire’s questions."
+      action: 'play_video'
+      options: {video_id: 'r5LXDD2rfFQ'}
+    ,
+      text: 'What are you interested in exploring/researching further in your work this period (regardless the music-theater field)?'
+      action: 'play_video'
+      options: {video_id: 'r5LXDD2rfFQ'}
+    ,
+      function: -> postAnswers('c')
+      action: 'play_video'
+      options: {video_id: 'r5LXDD2rfFQ'}
+    ,
+      text: "I got so many ideas from your answers! \n Let’s now move to Richard. You are going to watch a video of him doing his job / existing on stage."
+      action: 'play_video'
+      options: {video_id: 'Wn9gdqDXELI'}
+    ,
+      text: "Great, Richard! What a profession…! \n Moving on, let’s watch an excerpt of a music-theater piece that Els would like to share with the rest of the team. Please skip at 00:35."
+      action: 'play_video'
+      options: {video_id: 'vPyWC_ILphs?t=35s'}
+    ,
+      text: "I love your videos guys. Let’s watch one more! \n This is an excerpt of a music-theater piece that Roelof would like to share with the rest of the team."
+      action: 'play_video'
+      options: {video_id: 'wRQmuwAVPTo'}
+    ,
+      text: "Let’s finish the video frenzie with Iro doing her job / existing on stage! Please skip at 01:07."
+      action: 'play_video'
+      options: {video_id: 'hf0l2ghSGkE?t=1m7s'}
+    ,
+      text: "Moving on, in the next 15’ you will have the chance to discuss a few ideas. You are going to chat in 4 different rooms (channels) under different thematics. I will let you know when to move to a different room. You can talk for longer this time! \n Here are the first groups:"
+      action: 'play_video'
+      options: {video_id: 'r5LXDD2rfFQ'}
     ,
       function: -> randomGroupChat()
       action: 'play_video'
-      options: {video_id: '3NxMHP4rCko'}
+      options: {video_id: 'r5LXDD2rfFQ'}
     ,
-      text: "Second group: Moving on! Change groups"
+      text: "Moving on! New groups:"
       action: 'play_video'
-      options: {video_id: '3NxMHP4rCko'}
-    ,
-      function: -> randomGroupChat()
-      action: 'play_video'
-      options: {video_id: '3NxMHP4rCko'}
-    ,
-      text: "Third group: Change ding ding ding!"
-      action: 'play_video'
-      options: {video_id: '3NxMHP4rCko'}
+      options: {video_id: 'r5LXDD2rfFQ'}
     ,
       function: -> randomGroupChat()
       action: 'play_video'
-      options: {video_id: '3NxMHP4rCko'}
+      options: {video_id: 'r5LXDD2rfFQ'}
     ,
-      text: "Fourth group: Last random group! Change"
-      action: 'play_video'
-      options: {video_id: '3NxMHP4rCko'}
+      text: "Time for a grant finale! Please click on this link to join the live-stream! \n <https://hangouts.google.com/call/fwqa3bdcx3il2qknubkmn2fpaea>"
+      action: 'live_stream'
+      options: {video_id: 'r5LXDD2rfFQ'}
     ,
-      function: -> randomGroupChat()
+      text: "It was a pleasure to go through all this information during the past three days. What an inspiring team! \n Thanasis will send you soon more details about the upcoming workshop Utrecht (29/2-4/3). \n Goodbye everyone! See you in Spring in the next online roundtable of the RE-FUSE platform!"
       action: 'play_video'
-      options: {video_id: '3NxMHP4rCko'}
-    ,
-      text: "Thank you RE-FUSE team for one more information overload, it was fun! See you back here tomorrow @15:00!"
-      action: 'play_video'
-      options: {video_id: '3NxMHP4rCko'}
+      options: {video_id: 'r5LXDD2rfFQ'}
     ,
       text: ''
       action: 'welcome'
@@ -340,6 +308,12 @@ angular.module('simple-todos').controller 'TodosListCtrl', [
       say += "#{namen[9]}, #{namen[10]} join the channel: #speech_music "
       $scope.say say
 
+    randomvideoChat = ->
+      say = ('-\n-\n-\n\n\nWe are going to video chat in pairs. Click on your name to connect. 4 minutes each. \n\n ')
+      $(leden).each (i, name)->
+        say += "<https://plus.google.com/hangouts/_/#{Shuffle(hangouts)[i]}|#{name}>\n"
+      $scope.say say
+
     postAnswers = (name)->
       say = ''
       $($scope.answers).each ->
@@ -361,4 +335,4 @@ Shuffle = (o) ->
   o
 
 leden = ['Efthimis', 'Kieran', 'Roelof', 'George', 'Iro', 'Tzeni', 'Richard', 'Els', 'Pepe', 'Bas', 'Thanasis']
-# hangouts = ['tdmb6vcvw5a52gsnojogof564ua', 'htmrtfdbad5g35ymak4brtsocma', 'rgqnibmlgut4346vyt4e2mx6daa', 'cxzde2zfbtd74mpafzrnyoeaqea', 'bntvcwu4hvyskxbuo5yqwnxnw4a','tdmb6vcvw5a52gsnojogof564ua', 'htmrtfdbad5g35ymak4brtsocma', 'rgqnibmlgut4346vyt4e2mx6daa', 'cxzde2zfbtd74mpafzrnyoeaqea', 'bntvcwu4hvyskxbuo5yqwnxnw4a']
+hangouts = ['tdmb6vcvw5a52gsnojogof564ua', 'htmrtfdbad5g35ymak4brtsocma', 'rgqnibmlgut4346vyt4e2mx6daa', 'cxzde2zfbtd74mpafzrnyoeaqea', 'bntvcwu4hvyskxbuo5yqwnxnw4a','tdmb6vcvw5a52gsnojogof564ua', 'htmrtfdbad5g35ymak4brtsocma', 'rgqnibmlgut4346vyt4e2mx6daa', 'cxzde2zfbtd74mpafzrnyoeaqea', 'bntvcwu4hvyskxbuo5yqwnxnw4a', 'bntvcwu4hvyskxbuo5yqwnxnw4a']
